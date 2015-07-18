@@ -48,23 +48,38 @@ colors =       ['#3498db','#f1c40f','#2ecc71','#e74c3c']
 
 function panel_generator(n,left_or_right,title,description){
   /*Add link eventually*/
-  return("<div class='panel' style= 'top: "+(n)*40+"%;background-color:"+colors[n%8]+"' >" +
+  return("<div class='panel' id='panel"+n+"' onclick='openSection(this)' style='top:"+n*40+"%;background-color:"+colors[n%8]+"' >" +
     "<img class='picture_align_"+left_or_right+"' src='project_pic_"+n+".png'></img>" +
-    "<h1 class='title_text_"+left_or_right+"'>"+title+"</h1>" +
-      "<h2 class='subtitle_text_"+left_or_right+"' > "+description+" </h2>" +
+    "<h1 class='panel_title title_text_"+left_or_right+"'>"+title+"</h1>" +
+    "<h2 class='panel_subtitle subtitle_text_"+left_or_right+"' > "+description+" </h2>" +
   "</div>");
 }
 
 function generate_projects(project,n){
-  if(n%2==0){
-    left_or_right = "left";
-  } else {
-    left_or_right = "right";
-  }
+  if(n%2==0) {left_or_right = "left"; }
+  else       {left_or_right = "right";}
   title = project[0];
   description = project[1];
   document.body.innerHTML += panel_generator(n, left_or_right, title, description);
 }
 for (var i = 0; i < projects.length; i++) {
   generate_projects(projects[i],i);
+}
+
+//Function to open a section after a panel is clicked
+
+function openSection(obj){
+  for (var i = 0; i < projects.length; i++) {
+    if ("panel"+i != obj.id){
+      $( "#panel"+i ).animate({
+        opacity: 0,
+        left: "100%"
+      }, 1000);
+    }
+    $( obj ).animate({
+      top: 0
+    }, 1000);
+    document.getElementById("sectionText").innerHTML = document.getElementById( projects[obj.id.replace("panel","")][0].replace(/ /g,"_").replace(/'/g,"").replace(".",'') ).innerHTML;
+  }
+  $("#articleTitle").css({ color: colors[obj.id.replace("panel","")] });
 }

@@ -1,3 +1,38 @@
+$(document).ready(function(){
+
+	//Check to see if the window is top if not then display button
+	$(window).scroll(function(){
+		if ($(this).scrollTop() > $(".panel").height()) {
+			$('.scrollToTop').fadeIn();
+      $('#chevron').css({opacity:1});
+		} else {
+			$('#chevron').css({opacity:.5});
+		}
+	});
+
+	//Click event to scroll to top
+	$('.scrollToTop').click(function(){
+    $("#" + panel_that_is_open).animate({
+      top : 40*panel_that_is_open.replace("panel","")+"%"
+    }, 500, function(){
+      for (var i = 0; i < projects.length; i++) {
+          $( "#panel"+i ).animate({
+            opacity: 1,
+            left: "-10px",
+            top:i*40+"%"
+          }, 250);
+      }
+    });
+
+    $(".panel").addClass('animatePanel');
+		$('html, body').animate({scrollTop : 0},800, function(){$("#sectionText").animate({opacity: 0},500)});
+
+
+		return false;
+	});
+
+});
+
 var list_of_things_I_like = ['Coffee', 'HTML', 'Python', 'Javascript']
 var wait = 0;
 var add=true;
@@ -40,16 +75,15 @@ setInterval(text_animation, 400);
 //Make Panels
 
 projects = [['I\'m Joshua Draxten','I like <span id="text_animation"></span>'],
-            ['Didget Recognizer.','My exploration of AI & Data Science'],
+            ['Capstone Project.','200 hours of learning Cordova'],
             ['This Website.','My project to show off my projects'],
-            ['Capstone Project.','A 200 hour delve into App Development']]
+            ['The Little Things.','Things I made for fun']]
 
 colors =       ['#3498db','#f1c40f','#2ecc71','#e74c3c']
 
 function panel_generator(n,left_or_right,title,description){
   /*Add link eventually*/
   return("<div class='panel animatePanel' id='panel"+n+"' onclick='openSection(this)' style='top:"+n*40+"%;background-color:"+colors[n%8]+"' >" +
-    "<img class='picture_align_"+left_or_right+"' src='project_pic_"+n+".png'></img>" +
     "<h1 class='panel_title title_text_"+left_or_right+"'>"+title+"</h1>" +
     "<h2 class='panel_subtitle subtitle_text_"+left_or_right+"' > "+description+" </h2>" +
   "</div>");
@@ -81,9 +115,8 @@ function openSection(obj){
     }, 1000);
     document.getElementById("sectionText").innerHTML = document.getElementById( "section" + obj.id.replace("panel","") ).innerHTML;
     $("#sectionText").animate({
-      opacity: 1,
-      "margin-top":0
-    }, 2000)
+      opacity: 1
+    }, 100)
   }
   $("#articleTitle").css({ color: colors[obj.id.replace("panel","")] });
   $(".panel").removeClass('animatePanel')
@@ -93,19 +126,27 @@ function openSection(obj){
 //Undo that ungodly mess above
 
 function closeSection(){
-  $("#" + panel_that_is_open).animate({
-    top : 40*panel_that_is_open.replace("panel","")+"%"
-  }, 500, function(){
-    for (var i = 0; i < projects.length; i++) {
-      if ("panel" + i != panel_that_is_open){
-        $( "#panel"+i ).animate({
-          opacity: 1,
-          left: "-10px",
-          top:i*40+"%"
-        }, 250);
-      }
-    }
-  });
+  //Need to make user scroll to top
 
-  $(".panel").addClass('animatePanel');
 }
+// Is this mobile or is this desktop?{
+function check_screen_size(){
+  if ( $(window).width() < 1000 ){    //Definatly Mobile
+    $(".panel_subtitle").css({opacity:0})
+    $("#sectionText").css({
+      width: "80%",
+      "margin-left":"10%",
+      "font-size":"100%"
+    })
+  } else {                            //Definatly Desktop
+    $(".panel_subtitle").css({opacity:1})
+    $("#sectionText").css({
+      width: "50%",
+      "margin-left":"25%"
+    })
+  }
+}
+window.onLoad = setInterval(check_screen_size,100)
+
+
+// }

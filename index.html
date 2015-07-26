@@ -1,9 +1,16 @@
 <html>
 <head>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
   <link href='src/style.css' rel='stylesheet' type='text/css'>
   <script type="text/javascript" src="src/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript">
+  list_of_things_I_like = ['Coffee', 'HTML', 'Javascript', 'Python', 'jQuery', 'CSS3', 'D3.js'];
 
+  projects = [['Joshua Draxten','I like <span id="text_animation"></span>'],
+              ['&#8217;Moji.','Mobile Design & PhoneGap'],
+              ['This Website.','My workflow'],
+              ['The Little Things.','Things I made for fun']]
+  </script>
   <title>Joshua Draxten</title>
   <script id="section0" type='text/article'>
     <h2 id="articleTitle">Simple is beautiful.</h2>
@@ -12,7 +19,7 @@
       The thing that sparked my passion for the world of computers was something called conway&#8217;s game of life.
       It&#8217;s a relatively simple program that simulates cells that are either <q>dead</q> or <q>alive</q>.
       The concept behind this program is so simple, yet somehow it makes enormously complex systems.
-      With this as my starting point at a young age, I have always been facinated by the idea of simplicity giving rise to complex and useful systems.
+      With this as my starting point at a young age, I have always been fascinated by the idea of simplicity giving rise to complex and useful systems.
     </p>
     <p>
       I found python at age 8 with the google search <q>Easiest programming languages to learn</q>(Probably after a few spell-correcting Did you means).
@@ -23,62 +30,156 @@
     <p>
       For the past three years, my learning emphasis has been on web development.
       I have used HTML, Javascript, CSS and jQuery in countless projects ranging from toy compilers, websites for local businesses and mobile apps.
-      I&#8217;ve also been spending a lot of time teaching myself mathematics currently I am almost half way through [link: linear algebra done wrong] having compleated Calc I and Calc II.
+      I&#8217;ve also been spending a lot of time teaching myself mathematics currently I am almost half way through [link: linear algebra done wrong] having completed Calc I and Calc II.
     </p>
     <p>
       I am looking to start a career doing what I love: finding simple solutions to big problems.
-      If you can help me with that goal or would just like to say hello feel free to email me at JoshuaDraxten@live.com.
+      If you can help me with that goal or would just like to say hello feel free to email me: <a href="mailto:joshuadraxten@live.com" target="_top">JoshuaDraxten@live.com</a>.
     </p>
   </script>
 
   <script id="section1" type='text/article'>
+  <style>
+    #wrapper {
+      position:absolute;
+      width: 630px;
+      height: 700px;
+      padding: 0;
+      overflow: hidden;
+      left:50%;
+      margin-left:-160px;
+    }
+    #frame::-webkit-scrollbar {
+      display: none;
+    }
+    #frame {
+      opacity:0;
+      border-style:solid;
+      border-color:#34495e;
+      border-width:20px;
+      border-top-width:100px;
+      border-bottom-width:100px;
+      border-radius:50px;
+      width: 630px;
+      height: 1060px;
+    }
+  </style>
 
-      <h2 id="articleTitle">Life is absurd.</h2>
-        <p>
-          Existentialistic ideas came out of a time in society when there was a deep sense of despair following the Great Depression and World War II.
-          There was a spirit of optimism in society that was destroyed by World War I and its mid-century calamities.
-          This despair has been articulated by existentialist philosophers well into the 1970s and continues on to this day as a popular way of thinking and reasoning
-          (with the freedom to choose one’s preferred moral belief system and lifestyle).
-        </p>
-        <p>
-          An existentialist could either be a religious moralist, agnostic relativist, or an amoral atheist.
-          Kierkegaard, a religious philosopher, Nietzsche, an anti-Christian,
-          Sartre, an atheist, and Camus an atheist, are credited for their works and writings about existentialism.
-          Sartre is noted for bringing the most international attention to existentialism in the 20th century.
-        </p>
-        <p>
-          Each basically agrees that human life is in no way complete and fully satisfying because
-          of suffering and losses that occur when considering the lack of perfection, power, and control one has over their life.
-          Even though they do agree that life is not optimally satisfying, it nonetheless has meaning.
-          Existentialism is the search and journey for true self and true personal meaning in life.
-        </p>
+    <h1 id="articleTitle">"Delight and Surprise" - Steve Jobs</h1>
+    <p>
+      It&#8217;s fascinating how the success of the mobile sites stem from filling one particular niche.
+      I was interested in how this affects designing mobile websites as opposed to desktop websites.
+      So after taking extensive notes on both Google and Apple&#8217;s design philosophies, I set out to create my own project that worked smoothly with both ecosystems.
+    </p>
+    <p>
+      First things first: I needed something to make.
+      Something with a niche. The idea didn&#8217;t necessarily have to be good, just clear and concise.
+      So I wrote a bunch of ideas down and explained their basic function.
+      I used what I call "the Twitter test" to decide behind the ideas.
+      I picked between the ideas that took 140 characters or less to explain exactly what the project would accomplish.
+      The winner was:
+    </p>
+
+<blockquote cite="">
+  <p>
+    &#8217;Moji: Users send pictures to other users and have them guess which emoji the image was intended to imitate. Making emojis more personal
+  </p>
+</blockquote>
+
+
+<p>
+  My favorite thing about material design is the metaphor behind it, that objects on a screen aren &#8217;t made of pixels but of actual material.
+  I felt like this was a good starting point so I used Google&#8217;s polymer project.
+  But I made sure to pay attention to how everything looked on the apple ecosystem.
+  In order for it not to look clumsy, I restricted the different z-indexes to 3, which is the threshold that I saw on most iOS apps.
+</p>
+<div id="wrapper"><iframe id="frame" src="projects/Prototype/www/index.html" onload="frameLoad()"></iframe></div>
+</br></br>
+<p style="text-align:center;">
+  Loading &#8217;Moji....
+</p>
   </script>
 
   <script id="section2" type='text/article'>
-    <h2 id="articleTitle">This is a title for _____</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
+    <h2 id="articleTitle">Telling Stories</h2>
+
+    <p>
+      People digest information better through stories; they enjoy it better too.
+      I bring this up because my portfolio is all about my story.
+      You&#8217;re here because you want to know information about me, most likely my ability to perform different tasks.
+      It&#8217;s my job to show you this, and it&#8217;s my opportunity to generate FOMO on what I will be able to do for you.
+    </p>
+    <p>
+      Just as any story, mine has central ideas, I wanted the overall UX to reflect that as well.
+      As such, I designed the central themes of this website before I started to design it:
+    </p>
+    <ul>
+      <li>I am simple, the user understands me  </li>
+      <li>I am a puzzle, the user solves me     </li>
+      <li>I am fun, the user plays with me      </li>
+      <li>I am a story, the user reads me       </li>
+    </ul>
+    <p>
+    I believe the most important job of the UI is letting the user know where they are and where they can go from there.
+    The simplicity allows for you to recognize where you are right away, the puzzle helps shuffle the user&#8217;s position,
+    the fun attracts the user&#8217;s attention to their options and the story leaves an impression on the user.
+    </p>
+    <p>
+      I wrote all major code in 8 hours(broken up), the remaining time was a loop of feedback from people I know and me writing the sections.
+      Feel free to look around at the <a href="https://github.com/JoshuaDraxten/Portfolio" target="_blank">source code of this website</a>!
+    </p>
   </script>
 
   <script id="section3" type='text/article'>
-    <h2 id="articleTitle">This is a title for ______</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
+  <style>
+    #wrapper {
+      position:absolute;
+      width: 630px;
+      height: 700px;
+      padding: 0;
+      overflow: hidden;
+      left:50%;
+      margin-left:-160px;
+    }
+    #frame::-webkit-scrollbar {
+      display: none;
+    }
+    #frame {
+      opacity:0;
+      border-style:solid;
+      border-color:#34495e;
+      border-width:20px;
+      border-top-width:100px;
+      border-bottom-width:100px;
+      border-radius:50px;
+      width: 630px;
+      height: 1060px;
+    }
+  </style>
+    <h2 id="articleTitle">The little things.</h2>
+
+    <p>
+      Exploration is the key to discovery, and I am constantly exploring.
+      With the advent of sites like CodePen, I can now share even my small explorations.
+      If you want to see me make things for the sake of curiosity like an <a target="_blank" href="http://codepen.io/JoshuaDraxten/pen/sjiJu">animated japaneese flag written entirely in kanji</a>
+      or something like my <a target="_blank" href="http://codepen.io/JoshuaDraxten/pen/LVgGVO">BF compiler in CoffeeScript</a> for irony then <a target="_blank" href="http://codepen.io/JoshuaDraxten/popular/">follow me on CodePen</a>.
+      I&#8217;m always exploring something new! New things like my mini-game based on a misunderstanding of anti-gravity: the farther away you are the stronger the pull of gravity.
+    </p>
+<div id="wrapper">
+  <iframe id="frame" src="projects/Gravity/www/index.html" onload="frameLoad()"></iframe>
+</div>
+</br></br>
+<p style="text-align:center;">
+  Loading Gravate....
+</p>
+
   </script>
 
 </head>
 <body>
 
 <div id="sectionText"></div>
-<a href="#" class="scrollToTop"><h1 id="chevron" onclick="closeSection()">&rsaquo;</h1></a>
+<a href="#" class="scrollToTop"><h1 id="chevron">&rsaquo;</h1></a>
 
 </body>
 

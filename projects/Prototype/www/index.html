@@ -1,0 +1,86 @@
+<html>
+<head>
+  <title>Prototype</title>
+
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width;" />
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+  <script src="js/jquery.js"></script>
+
+  <link rel="import" href="bower_components/core-icons/core-icons.html"></link>
+  <link rel="import" href="bower_components/core-toolbar/core-toolbar.html"></link>
+  <link rel="import" href="bower_components/font-roboto/roboto.html"></link>
+  <link rel="import" href="bower_components/paper-button/paper-button.html"></link>
+  <link rel="import" href="post-card.html"></link>
+  <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html"></link>
+  <link rel="import" href="bower_components/paper-fab/paper-fab.html"></link>
+  <link rel="import" href="bower_components/paper-dialog/paper-dialog.html"></link>
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+
+  <script type="text/javascript" charset="utf-8" src="cordova.js"></script> 
+
+  <style>
+    .page{
+      margin-top: -25px;
+      position: absolute;
+      width: 100%;
+    }
+    #page1      {left:-100%;}
+    #index      {left: -50%;}
+    #page2      {left: 100%;}
+    #page3      {left: 200%;}
+
+    h1{text-align: center;}
+  </style>
+
+</head>
+
+<body unresolved>
+  <!-- Top Bar -->
+    <core-toolbar>
+      <paper-fab icon="settings" class="settingsFab" onClick="settings();"></paper-fab>
+
+        <span flex style="margin-top: 60px;" id='notification'></span>
+
+      <paper-fab icon="add" class="addFab" onClick="gotoPage2();"></paper-fab>
+    </core-toolbar>
+
+
+    <!-- The settings popup -->
+    
+
+
+  <!-- Every page is in a div, constructed here -->
+  <div data-role="page" id="page1" class="page">
+      <section>
+        <img id="guessPic" style='border-radius:100%; display: block; margin-left: auto; margin-right: auto;' src='images/myAdorableGirlfriend.jpeg' height="50%">
+      </section>
+      <section id="emojiBox">
+      </section>
+  </div>
+
+  <!-- Index -->
+  <div data-role="page" id="index" class="page">
+    </br></br>
+    <div class="container" id="peopleBox" layout vertical center>
+      <!-- Where all the tiles for the main people will go.-->
+    </div>
+  </div>
+
+  <!-- Emoji Picker -->
+  <div data-role="page" id="page2" class="page">
+    <div id="emojiContainer">
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

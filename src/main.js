@@ -1,12 +1,36 @@
+//Google Analytics
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-65623471-1', 'auto');
+ga('send', 'pageview');
+
+//display phone
+function frameLoad(){
+	ratio =  $("#wrapper").height()/1060;
+	$("#frame").css({
+		opacity:1,
+		"zoom":ratio,
+		"-moz-transform": "scale("+ratio+")",
+		"-moz-transform-origin": "0 0",
+		"-o-transform": "scale("+ratio+")",
+		"-o-transform-origin": "0 0","-webkit-transform":"scale("+ratio+")",
+		"-webkit-transform-origin": "0 0"});
+	}
+$(window).resize(frameLoad());
+
 $(document).ready(function(){
 
 	//Check to see if the window is top if not then display button
 	$(window).scroll(function(){
 		if ($(this).scrollTop() > $(".panel").height()) {
 			$('.scrollToTop').fadeIn();
-      $('#chevron').css({opacity:1});
+      $('#chevron').css({top:-110});
 		} else {
-			$('#chevron').css({opacity:.5});
+			$('#chevron').css({top:$(".panel").height() - 110 - $(this).scrollTop()});
 		}
 	});
 
@@ -26,14 +50,12 @@ $(document).ready(function(){
 
     $(".panel").addClass('animatePanel');
 		$('html, body').animate({scrollTop : 0},800, function(){$("#sectionText").animate({opacity: 0},500)});
-
-
+		scroll_far=false;
 		return false;
 	});
 
 });
 
-var list_of_things_I_like = ['Coffee', 'HTML', 'Python', 'Javascript']
 var wait = 0;
 var add=true;
 nth_thing_I_like=0;
@@ -70,14 +92,9 @@ function text_animation(){
     add = true;
   }
 }
-setInterval(text_animation, 400);
+setInterval(text_animation, 333);
 
 //Make Panels
-
-projects = [['I\'m Joshua Draxten','I like <span id="text_animation"></span>'],
-            ['Capstone Project.','200 hours of learning Cordova'],
-            ['This Website.','My project to show off my projects'],
-            ['The Little Things.','Things I made for fun']]
 
 colors =       ['#3498db','#f1c40f','#2ecc71','#e74c3c']
 
@@ -103,6 +120,7 @@ for (var i = 0; i < projects.length; i++) {
 //Function to open a section after a panel is clicked
 var panel_that_is_open = "panel0";
 function openSection(obj){
+	$('html, body').animate({scrollTop : 0},800)
   for (var i = 0; i < projects.length; i++) {
     if ("panel"+i != obj.id){
       $( "#panel"+i ).animate({
@@ -121,32 +139,30 @@ function openSection(obj){
   $("#articleTitle").css({ color: colors[obj.id.replace("panel","")] });
   $(".panel").removeClass('animatePanel')
   panel_that_is_open = obj.id
+	scroll_far = true;
 }
-
-//Undo that ungodly mess above
-
-function closeSection(){
-  //Need to make user scroll to top
-
-}
+$(window).on("scroll", function(e){
+				$(window).height(projects.length*$(".panel").height());
+				if($(window).scrollTop()+$(window).height()>projects.length*$(".panel").height() && !scroll_far){
+					$(window).scrollTop(-$(window).height()+projects.length*$(".panel").height());
+				}
+});
 // Is this mobile or is this desktop?{
 function check_screen_size(){
   if ( $(window).width() < 1000 ){    //Definatly Mobile
-    $(".panel_subtitle").css({opacity:0})
+    //$(".panel_subtitle").css({opacity:0})
     $("#sectionText").css({
       width: "80%",
       "margin-left":"10%",
-      "font-size":"100%"
+      "font-size":"200%"
     })
   } else {                            //Definatly Desktop
     $(".panel_subtitle").css({opacity:1})
     $("#sectionText").css({
       width: "50%",
-      "margin-left":"25%"
+      "margin-left":"25%",
+	    "font-size":"100%"
     })
   }
 }
-window.onLoad = setInterval(check_screen_size,100)
-
-
-// }
+window.onLoad = setInterval(check_screen_size,100);

@@ -1,0 +1,83 @@
+html{
+  cursor:pointer;
+}
+h1,h2,p{
+	position: relative;
+	font-family: lato, sans-serif;
+}
+body{
+	overflow: hidden;
+	background-color: #2ecc71;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-touch-callout: none;
+  -webkit-overflow-scrolling: touch;
+}
+#score{
+	position: absolute;
+	top:5%;
+	right:5%;
+	z-index:5;
+}
+#highscore{
+	color: #95a5a6;
+	margin-top: 10%;
+	opacity: 0;
+	text-align:center;
+	z-index: 5;
+	font-size: 60vw;
+}
+#player{
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+  z-index: 1;
+  position:absolute;
+  background-color:#e74c3c;
+  border-radius:50%;
+  border: 1px solid transparent;
+}
+
+#block{
+  z-index: 1;
+  position:absolute;
+  background-color:#34495e;
+  border-radius: 100%;
+}
+
+#tapDiv{
+	background-color: #2ecc71;
+	top:0;
+	left:0;
+	position:fixed;
+	width:100%;
+	height:calc(100%-50%);
+	z-index:-2;
+	overflow: hidden;
+	opacity: 0;
+}
+#mock1{
+	z-index: 0;
+	position:absolute;
+	border-radius: 100%;
+	width:0;
+	height:0;
+	top:50%;
+	left:50%;
+	overflow: hidden;
+	-webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+#liveDie{
+	z-index: 5;
+	position: absolute;
+	top:50%;
+	left:50%;
+	margin-left: 0px;
+	width:0;
+	height:0;
+	border-radius: 100%;
+	background-color: #f3f3f3;
+}

@@ -55,7 +55,7 @@ $(document).ready(function(){
 	});
 
 });
-
+var scroll_far = false;
 var wait = 0;
 var add=true;
 nth_thing_I_like=0;
@@ -149,20 +149,46 @@ $(window).on("scroll", function(e){
 });
 // Is this mobile or is this desktop?{
 function check_screen_size(){
-  if ( $(window).width() < 1000 ){    //Definatly Mobile
-    //$(".panel_subtitle").css({opacity:0})
+	if( $(window).width() < 750){ //phone
+		ratio = 1;
+		$("body").css({
+			width:"100%",
+			"margin-left":"0px",
+			"margin-top":"0px",
+			"zoom":ratio,
+			"-moz-transform": "scale("+ratio+")",
+			"-moz-transform-origin": "0 0",
+			"-o-transform": "scale("+ratio+")",
+			"-o-transform-origin": "0 0","-webkit-transform":"scale("+ratio+")",
+			"-webkit-transform-origin": "0 0"
+		});
+		$(".title_text_left").css({"margin-left":"25px"});
+		$(".title_text_right").css({"right":"35px"});
+		$(".panel_subtitle").css({opacity:0});
+		$("#sectionText").css({
+      width: "90%",
+      "margin-left":"5%",
+	    "font-size":"100%"
+    });
+	}
+  else if ( $(window).width() < 1000 ){    //Tablet
+		$(".panel_subtitle").css({opacity:0});
     $("#sectionText").css({
       width: "80%",
       "margin-left":"10%",
       "font-size":"200%"
-    })
-  } else {                            //Definatly Desktop
+    });
+		$(".title_text_left").css({"margin-left":"100px"});
+		$(".title_text_right").css({"right":"100px"});
+  } else {                            //Desktop/laptop
     $(".panel_subtitle").css({opacity:1})
     $("#sectionText").css({
       width: "50%",
       "margin-left":"25%",
 	    "font-size":"100%"
-    })
+    });
+		$(".title_text_left").css({"margin-left":"100px"});
+		$(".title_text_right").css({"right":"100px"});
   }
 }
 window.onLoad = setInterval(check_screen_size,100);
